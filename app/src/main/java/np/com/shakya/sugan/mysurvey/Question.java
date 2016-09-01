@@ -6,8 +6,7 @@ package np.com.shakya.sugan.mysurvey;
 public class Question {
     public static final int TEXT_QUESTION = 0;
     public static final int SPINNER_QUESTION = 1;
-    public static final int RADIO_BUTTON_QUESTION = 2;
-//    public static final int TOGGLE_QUESTION = 3 ;
+    public static final int TRUE_FALSE_QUESTION = 2;
 
     private int questionType;
     private String questionText;
