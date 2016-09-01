@@ -4,9 +4,12 @@ package np.com.shakya.sugan.mysurvey;
  * Created by sugan on 23/08/16.
  */
 public class Question {
+    public static final int TYPE_COUNT = 4;
+
     public static final int TEXT_QUESTION = 0;
     public static final int SPINNER_QUESTION = 1;
     public static final int TRUE_FALSE_QUESTION = 2;
+    public static final int RADIO_QUESTION = 3;
 
     private int questionType;
     private String questionText;

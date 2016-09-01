@@ -2,17 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_contentcd Wo">
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Spinner"
-        android:id="@+id/spinner_text_view" />
-    <Spinner
+        android:text="Radio"
+        android:id="@+id/radio_text_view" />
+
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner">
-    </Spinner>
+        android:id="@+id/radio_group"
+        android:orientation="horizontal"
+        android:weightSum="4">
+    </RadioGroup>
+
 </LinearLayout>

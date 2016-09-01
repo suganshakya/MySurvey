@@ -1,5 +1,6 @@
 package np.com.shakya.sugan.mysurvey;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import java.util.List;
  * Created by sugan on 24/08/16.
  */
 public class QuestionAdapter extends BaseAdapter {
-    private final int TYPE_COUNT = 3;
+    private final int TYPE_COUNT = Question.TYPE_COUNT;
     List<Question> questionList = new ArrayList<>();
 
     public QuestionAdapter(InputStream inputStream) {
@@ -35,9 +36,8 @@ public class QuestionAdapter extends BaseAdapter {
             while((csvLine=bufferedReader.readLine()) != null){
                 String [] row = csvLine.split(",");
                 int qType = Integer.parseInt(row[0]);
-                //  qId skipped for now
                 Question q = new Question(qType, row[2], row[3], null);
-                if(qType == 1){
+                if(qType == 1 || qType == 3){
                     q.setOptions(Arrays.copyOfRange(row, 4, row.length));
                 }
                 questionList.add(q);
@@ -107,7 +107,7 @@ public class QuestionAdapter extends BaseAdapter {
                     textView = (TextView) view.findViewById(R.id.true_false_text_view);
                     textView.setText(q.getQuestionText());
 
-                    RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.true_false_group);
+                    RadioGroup trueFalseGroup = (RadioGroup) view.findViewById(R.id.true_false_group);
                     String [] options = new String[]{"True", "False"};
                     RadioButton rb[] = new RadioButton[options.length];
                     rb[0] = (RadioButton) view.findViewById(R.id.true_false_button0);
@@ -118,8 +118,27 @@ public class QuestionAdapter extends BaseAdapter {
                     }
                     break;
 
+                case Question.RADIO_QUESTION:
+                    view = layoutInflater.inflate(R.layout.radio_button_layout, parent, false);
+                    textView = (TextView) view.findViewById(R.id.radio_text_view);
+                    textView.setText(q.getQuestionText());
+
+                    RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
+                    String [] radioOptions = q.getOptions();
+                    for(int i=0; i< radioOptions.length; ++i) {
+                        RadioButton radioButton = new RadioButton(parent.getContext());
+                        radioButton.setText(radioOptions[i]);
+                        radioButton.setId(i);
+                        radioGroup.addView(radioButton, new RadioGroup.LayoutParams(
+                                RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT)
+                        );
+                    }
+                    break;
+
+
                 default:
                     view = layoutInflater.inflate(R.layout.true_false_layout, parent, false);
+                    break;
 
            }
         }

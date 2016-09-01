@@ -1,5 +1,5 @@
 qType, qId, qText, qAnswer, qOptions
 0, 1, Where is Mt.Everest?, Nepal
-1, 2, "Which is water molecule?", H20, HO, H2O, HO2, OHO
-2, 3, "Obama is Prime Minister?", False
-0, 4, "Where is Kangaroos found", Australia, Canada, Australia, Africa, Brazil
+1, 2, Which is water molecule?, H20, HO, H2O, HO2, OHO
+2, 3, Obama is Prime Minister?, False
+3, 4, Where is Kangaroos found, Australia, Canada, Australia, Africa, Brazil
